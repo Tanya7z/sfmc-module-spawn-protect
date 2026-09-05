@@ -1,0 +1,18 @@
+{
+  "$schema": "https://cdn.jsdelivr.net/gh/DogeLakeDev/ScriptsForMinecraftServer@latest/modules/sdk/%40sfmc-sdk/schemas/sapi-manifest.v2.schema.json",
+  "schemaVersion": 2,
+  "id": "spawn-protect",
+  "name": "出生保护",
+  "configKey": "spawn_protect",
+  "enabledByDefault": true,
+  "canDisable": true,
+  "requires": [],
+  "permissions": [
+    "config:read:spawn_protect"
+  ],
+  "services": {
+    "provides": [],
+    "requires": []
+  },
+  "notes": "playerSpawn 施加 60 ticks resistance amp 5；已有同等或更高抗性时不逆向缩减。"
+}
