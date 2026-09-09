@@ -5,7 +5,12 @@
 import { world, type PlayerSpawnAfterEvent } from "@minecraft/server";
 import { ModuleRegistry } from "@sfmc-bds/sdk/module-loader";
 import { debug } from "@sfmc-bds/sdk/sapi/runtime";
-import { AMPLIFIER, DURATION_TICKS, EFFECT_ID, shouldApplyResistance } from "./protect.js";
+import {
+  AMPLIFIER,
+  DURATION_TICKS,
+  EFFECT_ID,
+  shouldApplyResistance,
+} from "./protect.js";
 
 const MODULE_ID = "spawn-protect";
 const eventCleanups: Array<() => void> = [];
@@ -35,13 +40,12 @@ ModuleRegistry.register({
     registerPermissions() {
       // 无命令面
     },
-    registerCommands() {
-      // 无
-    },
     registerEvents() {
-      const cb = world.afterEvents.playerSpawn.subscribe((ev: PlayerSpawnAfterEvent) => {
-        applySpawnProtect(ev.player);
-      });
+      const cb = world.afterEvents.playerSpawn.subscribe(
+        (ev: PlayerSpawnAfterEvent) => {
+          applySpawnProtect(ev.player);
+        },
+      );
       eventCleanups.push(() => {
         try {
           world.afterEvents.playerSpawn.unsubscribe(cb);
@@ -51,7 +55,10 @@ ModuleRegistry.register({
       });
     },
     init() {
-      debug.i("SpawnProtect", `init duration=${DURATION_TICKS} amp=${AMPLIFIER}`);
+      debug.i(
+        "SpawnProtect",
+        `init duration=${DURATION_TICKS} amp=${AMPLIFIER}`,
+      );
     },
     cleanup() {
       for (const c of eventCleanups.splice(0, eventCleanups.length)) c();
