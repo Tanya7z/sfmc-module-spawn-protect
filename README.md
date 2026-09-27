@@ -5,9 +5,9 @@ Wave B official SFMC module: **spawn-protect**（出生与复活保护）.
 ## Develop
 
 ```bash
-npm install
-npm run typecheck
-npm test
+pnpm install
+pnpm run typecheck
+pnpm run test
 ```
 
 Install into platform:
